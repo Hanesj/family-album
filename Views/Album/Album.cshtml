@@ -1,0 +1,18 @@
+@using System.Diagnostics.Eventing.Reader
+@model FamilyAlbum.Models.Image
+@{
+    ViewData[index: "Title"] = "Album";
+    string? name = ViewData[index: "Name"] as string;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Album</h1>
+    @if(!string.IsNullOrEmpty(name)){
+        <p>Here you will see the uploaded from @ViewData["Name"].</p>
+    }else{
+        <p>No name given.</p>
+    }
+
+    <h3>Uploaded by: @Model.Uploader</h3>
+   <h4>@Model.UploadedAt</h4>
+</div>
