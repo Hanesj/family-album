@@ -3,17 +3,52 @@
 @model List<Image>
 @{
     ViewData[index: "Title"] = "Album";
-    string? name = ViewData[index: "Name"] as string;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Images</h1>
-    @if(!string.IsNullOrEmpty(name)){
-        <p>Here you will see the uploaded from @ViewData["Name"].</p>
-    }else{
-        <p>No name given.</p>
-    }
+    <h1 class="display-4">Bilder</h1>
+    
+</div>
+    <div class="user-container">
+        <ul class="user-list">
+            <li>Name1</li>
+            <li>Name2</li>
+            <li>Name3</li>
+            <li>name4</li>
+            <li>name5</li>
+        </ul>
+</div>
+<div class="all-container">
 
-    <h3>Uploaded by: @Model[0].Uploader</h3>
-   <h4>@Model[0].UploadedAt</h4>
+<div class="content-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+
+<div class="content-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+<div class="content-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+<div class="content-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+<div class="content-container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
 </div>
