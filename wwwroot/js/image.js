@@ -59,7 +59,7 @@ const layoutGallery = (gallery) => {
 
   imgs.forEach((img, index) => {
     const offset = index * 80;
-    const scale = 1 - index * 0.03;
+    const scale = 2 - index * 0.03;
 
     img.style.transform = `translateY(${offset}px) scale(${scale})`;
     img.style.zIndex = imgs.length - index;
@@ -75,6 +75,11 @@ const clickableImgs = () => {
   const spanClose = document.querySelector(".modal .close");
   const spanNext = document.querySelector("#span-next");
   const spanPrev = document.querySelector("#span-prev");
+
+  const spanImageNo = document.querySelector("#image-no");
+
+  let imageNo;
+
   document.querySelectorAll(".gallery").forEach((gallery) => {
     const imgs = [...gallery.querySelectorAll("img")];
 
@@ -85,11 +90,7 @@ const clickableImgs = () => {
 
         currentImgs = imgs;
         curIndex = idx;
-        if (curIndex === 0) {
-          spanPrev.style.display = "none";
-        } else {
-          spanPrev.style.display = "block";
-        }
+        spanImageNo.textContent = `${curIndex + 1} / ${currentImgs.length}`;
       });
     });
   });
@@ -97,42 +98,50 @@ const clickableImgs = () => {
   // Stäng modal när man klickar på X
   spanClose.addEventListener("click", () => {
     modal.style.display = "none";
+    spanImageNo.style.textContent = "";
   });
 
   // Stäng modal när man klickar utanför bilden
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
+      spanImageNo.style.textContent = "";
     }
   });
   spanNext.addEventListener("click", () => {
     if (currentImgs.length === 0) return;
 
     curIndex++;
-    if (curIndex < currentImgs.length - 1) {
-      spanNext.style.display = "block";
-      spanPrev.style.display = "block";
+    if (curIndex >= currentImgs.length) {
+      curIndex = 0;
     }
-    if (curIndex >= currentImgs.length - 1) {
-      spanNext.style.display = "none";
-    }
+    spanImageNo.textContent = `${curIndex + 1} / ${currentImgs.length}`;
     modalImg.src = currentImgs[curIndex].src;
   });
+
   spanPrev.addEventListener("click", () => {
-    curIndex--;
+    curIndex = (curIndex - 1 + currentImgs.length) % currentImgs.length;
 
-    if (curIndex === 0) {
-      spanPrev.style.display = "none";
+    spanImageNo.textContent = `${curIndex + 1} / ${currentImgs.length}`;
+    modalImg.src = currentImgs[curIndex].src;
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (modal.style.display !== "block") return;
+
+    if (e.key === "ArrowRight") {
+      curIndex++;
+    }
+    if (curIndex >= currentImgs.length) {
+      curIndex = 0;
     }
 
-    if (curIndex > 0) {
-      spanPrev.style.display = "block";
+    if (e.key === "ArrowLeft") {
+      curIndex = (curIndex - 1 + currentImgs.length) % currentImgs.length;
     }
-    if (curIndex < currentImgs.length - 1) {
-      spanNext.style.display = "block";
-    }
-
+    spanImageNo.textContent = `${curIndex + 1} / ${currentImgs.length}`;
     modalImg.src = currentImgs[curIndex].src;
   });
 };
+
 document.addEventListener("DOMContentLoaded", initImage);
