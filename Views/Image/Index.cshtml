@@ -1,6 +1,7 @@
 @using System.Diagnostics.Eventing.Reader
 @* @model FamilyAlbum.Models.Image *@
 @model List<Image>
+<script src="/js/image.js"></script>
 @{
     ViewData[index: "Title"] = "Album";
 }
@@ -9,6 +10,8 @@
     <h1 class="display-4">Bilder</h1>
     
 </div>
+<div class="full-page">
+
     <div class="user-container">
         <ul class="user-list">
             <li>Name1</li>
@@ -20,35 +23,111 @@
 </div>
 <div class="all-container">
 
-<div class="content-container">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
+<div class="content-container first-image gallery">
+    <div class="stack">
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+</div>
 </div>
 
-<div class="content-container">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+    <span class="span-next" id="span-next">&#129138;</span>
 </div>
-<div class="content-container">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
+
+<div class="content-container first-image gallery">
+    <div class="stack">
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
 </div>
-<div class="content-container">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
 </div>
-<div class="content-container">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
+
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+    <span class="span-next" id="span-next">&#129138;</span>
 </div>
+<div class="content-container first-image gallery">
+    <div class="stack">
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+</div>
+</div>
+
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+    <span class="span-next" id="span-next">&#129138;</span>
+</div>
+<div class="content-container first-image gallery">
+    <div class="stack">
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+</div>
+</div>
+
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+    <span class="span-next" id="span-next">&#129138;</span>
+</div>
+<div class="content-container first-image gallery">
+    <div class="stack">
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+</div>
+</div>
+
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+    <span class="span-next" id="span-next">&#129138;</span>
+</div>
+
+
+    </div>
+</div>
+<div class="bottom-page">
+    end
+
 </div>
