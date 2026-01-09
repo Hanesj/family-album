@@ -74,6 +74,7 @@ const clickableImgs = () => {
   const modalImg = document.querySelector("#modalImg");
   const spanClose = document.querySelector(".modal .close");
   const spanNext = document.querySelector("#span-next");
+  const spanPrev = document.querySelector("#span-prev");
   document.querySelectorAll(".gallery").forEach((gallery) => {
     const imgs = [...gallery.querySelectorAll("img")];
 
@@ -84,6 +85,11 @@ const clickableImgs = () => {
 
         currentImgs = imgs;
         curIndex = idx;
+        if (curIndex === 0) {
+          spanPrev.style.display = "none";
+        } else {
+          spanPrev.style.display = "block";
+        }
       });
     });
   });
@@ -103,7 +109,29 @@ const clickableImgs = () => {
     if (currentImgs.length === 0) return;
 
     curIndex++;
-    if (curIndex >= currentImgs.length) curIndex = 0;
+    if (curIndex < currentImgs.length - 1) {
+      spanNext.style.display = "block";
+      spanPrev.style.display = "block";
+    }
+    if (curIndex >= currentImgs.length - 1) {
+      spanNext.style.display = "none";
+    }
+    modalImg.src = currentImgs[curIndex].src;
+  });
+  spanPrev.addEventListener("click", () => {
+    curIndex--;
+
+    if (curIndex === 0) {
+      spanPrev.style.display = "none";
+    }
+
+    if (curIndex > 0) {
+      spanPrev.style.display = "block";
+    }
+    if (curIndex < currentImgs.length - 1) {
+      spanNext.style.display = "block";
+    }
+
     modalImg.src = currentImgs[curIndex].src;
   });
 };

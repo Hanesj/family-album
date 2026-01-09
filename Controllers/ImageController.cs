@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamilyAlbum.Controllers;
 
-[Route("Image")]
+[Route("Images")]
 public class ImageController: Controller
 {
     private readonly AppDBContext _dbContext;
