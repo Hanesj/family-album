@@ -52,6 +52,7 @@ const initImage = () => {
     gallery.addEventListener("mouseleave", () => (lastY = null));
   });
   clickableImgs();
+  uploadModal();
 };
 
 const layoutGallery = (gallery) => {
@@ -141,6 +142,41 @@ const clickableImgs = () => {
     }
     spanImageNo.textContent = `${curIndex + 1} / ${currentImgs.length}`;
     modalImg.src = currentImgs[curIndex].src;
+  });
+};
+
+const uploadModal = () => {
+  const modal = document.getElementById("uploadModal");
+  const openBtn = document.getElementById("openUploadModal");
+  const closeBtn = document.getElementById("closeUploadModal");
+  const cancelBtn = document.getElementById("cancelUpload");
+
+  const form = modal.querySelector("form");
+
+  openBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  cancelBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(
+      parseFloat(e.currentTarget[0].files[0].size / 1000000).toFixed(2),
+      "MB"
+    );
   });
 };
 

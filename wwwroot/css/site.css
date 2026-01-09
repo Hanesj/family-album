@@ -177,3 +177,50 @@ body {
   top: 91%;
   left: 50%;
 }
+
+.upper-container {
+  display: flex;
+  flex-direction: row;
+  h1 {
+    flex-grow: 1;
+    margin-left: 5rem;
+  }
+  button {
+    border-radius: 4px;
+    height: 3rem;
+    align-self: center;
+  }
+}
+
+.upload-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10000; /* över bild-modal */
+}
+
+.upload-modal-box {
+  background: #fff;
+  width: 420px;
+  max-width: 90%;
+  margin: 12% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.upload-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.upload-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

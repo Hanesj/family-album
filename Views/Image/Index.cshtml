@@ -7,10 +7,33 @@
 }
 
 <div class="text-center">
+    <div class="upper-container">
+
     <h1 class="display-4">Bilder</h1>
+    <button id="openUploadModal">Ladda upp</button>
+    </div>
     
 </div>
+
+<div id="uploadModal" class="upload-modal">
+  <div class="upload-modal-box">
+    <span class="upload-close" id="closeUploadModal">&times;</span>
+
+    <h2>Ladda upp bild</h2>
+
+    <form enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" />
+
+      <div class="upload-actions">
+        <button type="submit">Ladda upp</button>
+        <button type="button" id="cancelUpload">Avbryt</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="full-page">
+    
 
     <div class="user-container">
         <ul class="user-list">
@@ -47,7 +70,21 @@
 
 <div class="content-container first-image gallery">
     <div class="stack">
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
+    <img src="@Url.Content("/images/3.jpg")" />
+</div>
+</div>
+
+<div class="content-container first-image gallery">
+    <div class="stack">
+    <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/2.jpg")" />
     <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/1.jpg")" />
@@ -70,20 +107,6 @@
     <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/2.jpg")" />
     <img src="@Url.Content("/images/3.jpg")" />
-</div>
-</div>
-
-<div class="content-container first-image gallery">
-    <div class="stack">
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/2.jpg")" />
     <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/2.jpg")" />
@@ -92,7 +115,7 @@
 
 <div class="content-container first-image gallery">
     <div class="stack">
-    <img src="@Url.Content("/images/1.jpg")" />
+    <img src="@Url.Content("/images/2.jpg")" />
     <img src="@Url.Content("/images/2.jpg")" />
     <img src="@Url.Content("/images/3.jpg")" />
     <img src="@Url.Content("/images/1.jpg")" />

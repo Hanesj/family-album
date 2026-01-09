@@ -1,10 +1,11 @@
 using FamilyAlbum.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamilyAlbum.Controllers;
 
-[Route("Images")]
+[Route("images")]
 public class ImageController: Controller
 {
     private readonly AppDBContext _dbContext;
@@ -31,4 +32,5 @@ public class ImageController: Controller
             return BadRequest();
         }
     }
+   
 }

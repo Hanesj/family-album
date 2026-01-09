@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamilyAlbum.Controllers;
 
-[Route("Album")]
+[Route("album")]
 public class AlbumController : Controller
 {
 
