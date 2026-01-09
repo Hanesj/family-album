@@ -1,0 +1,168 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  max-width: none;
+}
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.user-container {
+  background-color: #064c96;
+  min-height: 4rem;
+  border-radius: 4px;
+}
+.user-list {
+  height: 4rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.user-list > * {
+  outline: 1px solid yellowgreen;
+  padding: 1rem;
+  color: white;
+}
+.content-container {
+  /* outline: 2px solid red; */
+  width: 30rem;
+  /* padding-top: 5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+
+  img {
+    max-width: auto;
+    border-radius: 4px;
+  }
+}
+
+.content-container > * {
+  min-height: auto;
+  max-width: 22rem;
+  align-self: center;
+  /* border-bottom: 1px solid yellow; */
+}
+
+.all-container {
+  display: flex;
+  max-width: none;
+  max-height: 100vh;
+
+  gap: 1rem;
+}
+
+.first-image {
+  margin-left: 1rem;
+}
+.last-image {
+  margin-right: 1rem;
+}
+
+.full-page {
+  background-color: blanchedalmond;
+}
+.bottom-page {
+  text-align: center;
+  margin-top: 0.5rem;
+  background-color: chocolate;
+}
+.gallery {
+  position: relative;
+  width: 30rem;
+  height: 45rem;
+  cursor: grab;
+  overflow: visible;
+}
+
+.stack {
+  position: relative;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.gallery img {
+  position: absolute;
+  user-select: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 6px;
+  transition: transform 0.25s ease, z-index 0s;
+  cursor: pointer;
+}
+
+.modal {
+  display: none; /* dold som default */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* scroll om bilden är stor */
+  background-color: rgba(0, 0, 0, 0.8); /* mörk bakgrund */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px black;
+}
+
+.close,
+.span-next {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.span-next {
+  top: 40%;
+  right: 5rem;
+  font-size: 5rem;
+}

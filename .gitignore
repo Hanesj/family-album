@@ -6,7 +6,8 @@
 # dotenv files
 .env
 
-wwwroot/
+wwwroot/lib/
+wwwroot/images/
 Migrations/
 
 # User-specific files
