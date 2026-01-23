@@ -8,7 +8,8 @@ const initImage = () => {
     const updateFocus = (newIndex) => {
       focusIndex = newIndex;
       const spacing = 40;
-      const centerY = spacing * focusIndex; // fokus-bildens offset = dess position * spacing
+      const baseOffset = (imgs.length - 1) * spacing / 2; // Center the stack
+      const centerY = spacing * focusIndex - baseOffset;
 
       imgs.forEach((img, i) => {
         const diff = i - focusIndex;

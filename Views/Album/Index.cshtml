@@ -1,14 +1,92 @@
-@using System.Diagnostics.Eventing.Reader
 @{
-    ViewData[index: "Title"] = "Album";
+    ViewData["Title"] = "Albums";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Albums</h1>
-    <form id="searchAlbum">
-    <input type="text" name="albumName" placeholder="Name"/>
-    <button type="submit">Search</button>
-    </form>
-    
+<div class="albums-page text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-5" style="color: #2563eb;">
+            📁 Family Albums
+        </h1>
+        <p class="lead text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+            Discover and explore beautiful photo albums created by your family members.
+        </p>
+
+        <div class="search-section bg-white rounded-4 shadow-sm p-4 mb-5 mx-auto" style="max-width: 600px;">
+            <h5 class="fw-bold mb-4 text-dark">🔍 Find an Album</h5>
+            <form id="searchAlbum" class="d-flex flex-column flex-md-row gap-3 justify-content-center align-items-center">
+                <div class="input-group input-group-lg flex-fill" style="max-width: 400px;">
+                    <span class="input-group-text bg-light border-end-0">
+                        🔍
+                    </span>
+                    <input type="text" name="albumName" class="form-control border-start-0 ps-0"
+                           placeholder="Enter album name..." style="border-left: none; box-shadow: none;">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg px-4 fw-semibold">
+                    Search Albums
+                </button>
+            </form>
+        </div>
+
+        <div class="placeholder-content">
+            <div class="empty-state bg-white rounded-4 shadow-sm p-5 mx-auto" style="max-width: 500px;">
+                <div class="empty-icon mb-4">
+                    <span class="fs-1">📷</span>
+                </div>
+                <h5 class="text-muted mb-3">No albums found yet</h5>
+                <p class="text-muted mb-4">
+                    Albums will appear here once they are created. Use the search above to find specific albums.
+                </p>
+                <button class="btn btn-outline-primary" onclick="alert('Album creation feature coming soon!')">
+                    Create New Album
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+.albums-page {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+    min-height: 80vh;
+}
+
+.search-section {
+    border: 1px solid #e2e8f0;
+}
+
+.input-group-text {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.1);
+}
+
+.empty-state {
+    border: 1px solid #e2e8f0;
+}
+
+.empty-icon {
+    opacity: 0.6;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+</style>
 

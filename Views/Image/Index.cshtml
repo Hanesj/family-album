@@ -1,136 +1,275 @@
 @using System.Diagnostics.Eventing.Reader
-@* @model FamilyAlbum.Models.Image *@
 @model List<Image>
 <script src="/js/image.js"></script>
 @{
-    ViewData[index: "Title"] = "Album";
+    ViewData["Title"] = "Images";
 }
 
-<div class="text-center">
-    <div class="upper-container">
-
-    <h1 class="display-4">Bilder</h1>
-    <button id="openUploadModal">Ladda upp</button>
-    </div>
-    
-</div>
-
-<div id="uploadModal" class="upload-modal">
-  <div class="upload-modal-box">
-    <span class="upload-close" id="closeUploadModal">&times;</span>
-
-    <h2>Ladda upp bild</h2>
-
-    <form enctype="multipart/form-data">
-      <input type="file" name="image" accept="image/*" />
-
-      <div class="upload-actions">
-        <button type="submit">Ladda upp</button>
-        <button type="button" id="cancelUpload">Avbryt</button>
-      </div>
-    </form>
-  </div>
-</div>
-
 <div class="full-page">
-    
+    <div class="content-wrapper">
+        <div class="upper-container">
+            <h1>Family Images</h1>
+            <button id="openUploadModal" class="btn btn-primary">
+                <span class="me-2">📤</span>Upload Image
+            </button>
+        </div>
 
-    <div class="user-container">
-        <ul class="user-list">
-            <li>Name1</li>
-            <li>Name2</li>
-            <li>Name3</li>
-            <li>name4</li>
-            <li>name5</li>
-        </ul>
-</div>
-<div class="all-container">
 
-<div class="content-container first-image gallery">
-    <div class="stack">
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-</div>
-</div>
 
-<div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <span class="span-prev" id="span-prev">&#129136;</span>
-    <img class="modal-content" id="modalImg" />
-    <span id="image-no" class="image-no"></span>
-    <span class="span-next" id="span-next">&#129138;</span>
-</div>
+        <!-- Gallery Container -->
+        <div class="gallery-container-wrapper">
+            <!-- Gallery Set 1 -->
+            <div class="all-container active" id="gallery-set-1">
+                <!-- Gallery Stacks -->
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Mom's Photos</h3>
+                    </div>
+                <div class="gallery">
+                    <div class="stack">
+                        <img src="~/images/IMG_2744.JPG" alt="Family photo 1" />
+                        <img src="~/images/IMG_2766.JPG" alt="Family photo 2" />
+                        <img src="~/images/IMG_2773.JPG" alt="Family photo 3" />
+                        <img src="~/images/IMG_2774.JPG" alt="Family photo 4" />
+                        <img src="~/images/IMG_2744.JPG" alt="Family photo 5" />
+                        <img src="~/images/IMG_2766.JPG" alt="Family photo 6" />
+                    </div>
+                </div>
+                </div>
 
-<div class="content-container first-image gallery">
-    <div class="stack">
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-</div>
-</div>
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Family Vacation</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 7" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 8" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 9" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 10" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 11" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 12" />
+                        </div>
+                    </div>
+                </div>
 
-<div class="content-container first-image gallery">
-    <div class="stack">
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-</div>
-</div>
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Kids' Adventures</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 13" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 14" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 15" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 16" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 17" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 18" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div class="content-container first-image gallery">
-    <div class="stack">
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-</div>
-</div>
+            <!-- Gallery Set 2 -->
+            <div class="all-container" id="gallery-set-2">
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Dad's Collection</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 19" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 20" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 21" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 22" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 23" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 24" />
+                        </div>
+                    </div>
+                </div>
 
-<div class="content-container first-image gallery">
-    <div class="stack">
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/1.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-    <img src="@Url.Content("/images/2.jpg")" />
-    <img src="@Url.Content("/images/3.jpg")" />
-</div>
-</div>
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Holiday Memories</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 25" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 26" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 27" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 28" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 29" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 30" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Family Gatherings</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 31" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 32" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 33" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 34" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 35" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 36" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Set 3 -->
+            <div class="all-container" id="gallery-set-3">
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Birthday Celebrations</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 37" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 38" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 39" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 40" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 41" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 42" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Summer Fun</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 43" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 44" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 45" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 46" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 47" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 48" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-container">
+                    <div class="gallery-header">
+                        <h3>Winter Holidays</h3>
+                    </div>
+                    <div class="gallery">
+                        <div class="stack">
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 49" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 50" />
+                            <img src="~/images/IMG_2744.JPG" alt="Family photo 51" />
+                            <img src="~/images/IMG_2766.JPG" alt="Family photo 52" />
+                            <img src="~/images/IMG_2773.JPG" alt="Family photo 53" />
+                            <img src="~/images/IMG_2774.JPG" alt="Family photo 54" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="gallery-nav-arrow gallery-nav-arrow-left" id="prev-gallery" aria-label="Previous gallery set">
+                <span class="arrow-icon">◀</span>
+            </button>
+            <button class="gallery-nav-arrow gallery-nav-arrow-right" id="next-gallery" aria-label="Next gallery set">
+                <span class="arrow-icon">▶</span>
+            </button>
+        </div>
 
 
     </div>
 </div>
-<div class="bottom-page">
-    end
 
+<!-- Upload Modal -->
+<div id="uploadModal" class="upload-modal">
+    <div class="upload-modal-box">
+        <span class="upload-close" id="closeUploadModal" aria-label="Close">&times;</span>
+
+        <h2 class="mb-4">
+            <span class="me-2">📤</span>Upload New Image
+        </h2>
+
+        <form enctype="multipart/form-data" class="upload-form">
+            <div class="mb-4">
+                <label for="imageFile" class="form-label fw-semibold">
+                    Choose an image to share with your family:
+                </label>
+                <input type="file" id="imageFile" name="image" accept="image/*" class="form-control form-control-lg"
+                       required style="cursor: pointer;" />
+                <div class="form-text text-muted mt-2">
+                    Supported formats: JPG, PNG, GIF, WebP. Maximum file size: 10MB.
+                </div>
+            </div>
+
+            <div class="upload-actions">
+                <button type="button" id="cancelUpload" class="btn btn-secondary">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <span class="me-2">⬆️</span>Upload Image
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
+
+<!-- Image Modal -->
+<div id="imageModal" class="modal">
+    <span class="close" aria-label="Close">&times;</span>
+    <span class="span-prev" id="span-prev" aria-label="Previous image">‹</span>
+    <img class="modal-content" id="modalImg" alt="Full size image" />
+    <span id="image-no" class="image-no"></span>
+    <span class="span-next" id="span-next" aria-label="Next image">›</span>
+</div>
+
+<script>
+    // Gallery navigation functionality
+    let currentGallerySet = 1;
+    const totalGallerySets = 3;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const nextButton = document.getElementById('next-gallery');
+        const prevButton = document.getElementById('prev-gallery');
+        const gallerySets = [
+            document.getElementById('gallery-set-1'),
+            document.getElementById('gallery-set-2'),
+            document.getElementById('gallery-set-3')
+        ];
+
+        function showGallerySet(setIndex) {
+            // Hide all gallery sets
+            gallerySets.forEach(set => {
+                set.classList.remove('active');
+            });
+
+            // Show the target gallery set
+            gallerySets[setIndex - 1].classList.add('active');
+
+            // Reinitialize image galleries for the new set
+            setTimeout(() => {
+                if (typeof initImage === 'function') {
+                    initImage();
+                }
+            }, 100);
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', function() {
+                currentGallerySet = currentGallerySet >= totalGallerySets ? 1 : currentGallerySet + 1;
+                showGallerySet(currentGallerySet);
+            });
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', function() {
+                currentGallerySet = currentGallerySet <= 1 ? totalGallerySets : currentGallerySet - 1;
+                showGallerySet(currentGallerySet);
+            });
+        }
+    });
+</script>

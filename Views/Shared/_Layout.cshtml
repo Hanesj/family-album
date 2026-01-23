@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,44 +11,108 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FamilyAlbum</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Image" asp-action="Index">Images</a>
-                        </li>
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid px-4">
+                <!-- Logo/Brand -->
+                <a class="navbar-brand d-flex align-items-center fw-bold fs-3 text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    <div class="brand-icon me-3">
+                        <span class="brand-emoji">📸</span>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-main">Family</span>
+                        <span class="brand-sub">Album</span>
+                    </div>
+                </a>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="Index">Albums</a>
-                        </li>
-                    </ul>
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav"
+                        aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon-custom">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="navbar-nav-desktop">
+                    <a class="nav-link-custom mx-2 px-4 py-2 rounded-pill fw-semibold" asp-area="" asp-controller="Home" asp-action="Index">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Home</span>
+                    </a>
+                    <a class="nav-link-custom mx-2 px-4 py-2 rounded-pill fw-semibold" asp-area="" asp-controller="Image" asp-action="Index">
+                        <span class="nav-icon">🖼️</span>
+                        <span class="nav-text">Gallery</span>
+                    </a>
+                    <a class="nav-link-custom mx-2 px-4 py-2 rounded-pill fw-semibold" asp-area="" asp-controller="Album" asp-action="Index">
+                        <span class="nav-icon">📁</span>
+                        <span class="nav-text">Albums</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="collapse navbar-collapse-mobile" id="mobileNav">
+                <div class="navbar-nav-mobile">
+                    <a class="nav-link-mobile py-3 px-4 fw-semibold" asp-area="" asp-controller="Home" asp-action="Index">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Home</span>
+                    </a>
+                    <a class="nav-link-mobile py-3 px-4 fw-semibold" asp-area="" asp-controller="Image" asp-action="Index">
+                        <span class="nav-icon">🖼️</span>
+                        <span class="nav-text">Gallery</span>
+                    </a>
+                    <a class="nav-link-mobile py-3 px-4 fw-semibold" asp-area="" asp-controller="Album" asp-action="Index">
+                        <span class="nav-icon">📁</span>
+                        <span class="nav-text">Albums</span>
+                    </a>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main">
+        @RenderBody()
+    </main>
 
-    <footer class="border-top footer text-muted">
+    <footer class="text-center py-3">
         <div class="container">
-            &copy; 2026 - FamilyAlbum - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 FamilyAlbum
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        // Navbar animation for mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const togglerIcon = document.querySelector('.navbar-toggler-icon-custom');
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (navbarToggler && togglerIcon) {
+                navbarToggler.addEventListener('click', function() {
+                    togglerIcon.classList.toggle('open');
+                });
+            }
+
+            // Close mobile menu when clicking a link
+            if (mobileNav) {
+                document.querySelectorAll('.nav-link-mobile').forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (mobileNav.classList.contains('show')) {
+                            new bootstrap.Collapse(mobileNav, {
+                                hide: true
+                            });
+                            if (togglerIcon) {
+                                togglerIcon.classList.remove('open');
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
