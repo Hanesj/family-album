@@ -8,10 +8,15 @@
 <div class="full-page">
     <div class="content-wrapper">
         <div class="upper-container">
-            <h1>Family Images</h1>
-            <button id="openUploadModal" class="btn btn-primary">
-                Upload Image
-            </button>
+            <h1>Familjebilder</h1>
+            <div class="action-buttons">
+                <button id="createGalleryBtn" class="btn btn-success">
+                    <span class="me-2">➕</span>Skapa Album
+                </button>
+                <button id="openUploadModal" class="btn btn-primary">
+                    <span class="me-2">📤</span>Ladda Upp Bild
+                </button>
+            </div>
         </div>
 
 
@@ -24,7 +29,7 @@
                 <div class="content-container">
                     <div class="gallery-wrapper">
                         <div class="gallery-header">
-                            <h3>Mom's Photos</h3>
+                            <h3>Mammas Bilder</h3>
                         </div>
                         <div class="gallery">
                             <div class="stack">
@@ -42,7 +47,7 @@
                 <div class="content-container">
                     <div class="gallery-wrapper">
                         <div class="gallery-header">
-                            <h3>Family Vacation</h3>
+                            <h3>Familjesemester</h3>
                         </div>
                         <div class="gallery">
                             <div class="stack">
@@ -60,7 +65,7 @@
                 <div class="content-container">
                     <div class="gallery-wrapper">
                         <div class="gallery-header">
-                            <h3>Kids' Adventures</h3>
+                            <h3>Barnens Äventyr</h3>
                         </div>
                         <div class="gallery">
                             <div class="stack">
@@ -81,7 +86,7 @@
                 <div class="content-container">
                     <div class="gallery-wrapper">
                         <div class="gallery-header">
-                            <h3>Dad's Collection</h3>
+                            <h3>Pappas Samling</h3>
                         </div>
                         <div class="gallery">
                             <div class="stack">
@@ -200,22 +205,35 @@
 <!-- Upload Modal -->
 <div id="uploadModal" class="upload-modal">
     <div class="upload-modal-box">
-        <span class="upload-close" id="closeUploadModal" aria-label="Close">&times;</span>
+        <span class="upload-close" id="closeUploadModal" aria-label="Stäng">&times;</span>
 
         <h2 class="mb-4">
-            <span class="me-2">📤</span>Upload New Image
+            <span class="me-2">📤</span>Ladda Upp Ny Bild
         </h2>
 
         <form enctype="multipart/form-data" class="upload-form">
             <div class="mb-4">
                 <label for="imageFile" class="form-label fw-semibold">
-                    Choose an image to share with your family:
+                    Välj en bild att dela med din familj:
                 </label>
                 <input type="file" id="imageFile" name="image" accept="image/*" class="form-control form-control-lg"
                        required style="cursor: pointer;" />
                 <div class="form-text text-muted mt-2">
-                    Supported formats: JPG, PNG, GIF, WebP. Maximum file size: 10MB.
+                    Format som stöds: JPG, PNG, GIF, WebP. Max filstorlek: 10MB.
                 </div>
+            </div>
+
+            <div class="upload-actions">
+                <button type="button" class="btn btn-secondary">
+                    Avbryt
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <span class="me-2">⬆️</span>Ladda Upp Bild
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
             </div>
 
             <div class="upload-actions">
@@ -230,6 +248,32 @@
     </div>
 </div>
 
+<!-- Create Gallery Modal -->
+<div id="createGalleryModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Skapa Nytt Album</h2>
+            <button class="close" id="closeCreateGalleryModal" aria-label="Stäng">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="createGalleryForm">
+                <div class="mb-4">
+                    <label for="galleryName" class="form-label">Albumnamn</label>
+                    <input type="text" class="form-control" id="galleryName" placeholder="Ange albumnamn" required>
+                </div>
+                <div class="mb-4">
+                    <label for="galleryDescription" class="form-label">Beskrivning (Valfritt)</label>
+                    <textarea class="form-control" id="galleryDescription" rows="3" placeholder="Beskriv ditt album"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelCreateGallery">Avbryt</button>
+                    <button type="submit" class="btn btn-success">Skapa Album</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Image Modal -->
 <div id="imageModal" class="modal">
     <span class="close" aria-label="Close">&times;</span>
@@ -239,49 +283,3 @@
     <span class="span-next" id="span-next" aria-label="Next image">›</span>
 </div>
 
-<script>
-    // Gallery navigation functionality
-    let currentGallerySet = 1;
-    const totalGallerySets = 3;
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const nextButton = document.getElementById('next-gallery');
-        const prevButton = document.getElementById('prev-gallery');
-        const gallerySets = [
-            document.getElementById('gallery-set-1'),
-            document.getElementById('gallery-set-2'),
-            document.getElementById('gallery-set-3')
-        ];
-
-        function showGallerySet(setIndex) {
-            // Hide all gallery sets
-            gallerySets.forEach(set => {
-                set.classList.remove('active');
-            });
-
-            // Show the target gallery set
-            gallerySets[setIndex - 1].classList.add('active');
-
-            // Reinitialize image galleries for the new set
-            setTimeout(() => {
-                if (typeof initImage === 'function') {
-                    initImage();
-                }
-            }, 100);
-        }
-
-        if (nextButton) {
-            nextButton.addEventListener('click', function() {
-                currentGallerySet = currentGallerySet >= totalGallerySets ? 1 : currentGallerySet + 1;
-                showGallerySet(currentGallerySet);
-            });
-        }
-
-        if (prevButton) {
-            prevButton.addEventListener('click', function() {
-                currentGallerySet = currentGallerySet <= 1 ? totalGallerySets : currentGallerySet - 1;
-                showGallerySet(currentGallerySet);
-            });
-        }
-    });
-</script>

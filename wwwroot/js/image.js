@@ -54,19 +54,8 @@ const initImage = () => {
   });
   clickableImgs();
   uploadModal();
-};
-
-const layoutGallery = (gallery) => {
-  const imgs = [...gallery.querySelectorAll("img")];
-
-  imgs.forEach((img, index) => {
-    const offset = index * 80;
-    const scale = 2 - index * 0.03;
-
-    img.style.transform = `translateY(${offset}px) scale(${scale})`;
-    img.style.zIndex = imgs.length - index;
-    img.style.opacity = index > 12 ? 0 : 1;
-  });
+  createGalleryModal();
+  clickableImgs();
 };
 
 const clickableImgs = () => {
@@ -179,6 +168,56 @@ const uploadModal = () => {
       "MB"
     );
   });
+};
+
+const createGalleryModal = () => {
+  const modal = document.getElementById("createGalleryModal");
+  const openBtn = document.getElementById("createGalleryBtn");
+  const closeBtn = document.getElementById("closeCreateGalleryModal");
+  const cancelBtn = document.getElementById("cancelCreateGallery");
+
+  const form = document.getElementById("createGalleryForm");
+
+  if (openBtn) {
+    openBtn.addEventListener("click", () => {
+      if (modal) modal.style.display = "block";
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      if (modal) modal.style.display = "none";
+    });
+  }
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      if (modal) modal.style.display = "none";
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  }
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const galleryName = document.getElementById("galleryName")?.value;
+      const galleryDescription = document.getElementById("galleryDescription")?.value;
+
+      // For now, just show an alert with the gallery info
+      alert(`Gallery "${galleryName}" created!\nDescription: ${galleryDescription || 'None'}`);
+
+      // Reset form and close modal
+      form.reset();
+      if (modal) modal.style.display = "none";
+    });
+  }
 };
 
 document.addEventListener("DOMContentLoaded", initImage);
